@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Pozolería La Hidrocalida</title>
+    <style>
+        .loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .loader-container.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader-logo {
+            width: 200px;
+            height: auto;
+            opacity: 0;
+            transform: scale(0.7);
+            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .loader-logo.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .content {
+            display: none;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .content.show {
+            display: block;
+            opacity: 1;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="loader-container">
+        <img src="Logo.jpeg" alt="Logo" class="loader-logo">
+    </div>
+
+    <div class="content">
+        <img src="Menu0.jpeg" alt="Menu01">
+        <img src="Menu1.jpeg" alt="Menu02">
+        <img src="Menu2.jpeg" alt="Menu03">
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            // Mostrar el logo con animación inmediatamente
+            const logo = document.querySelector('.loader-logo');
+            setTimeout(() => {
+                logo.classList.add('show');
+            }, 300);
+
+            // Después mostrar el contenido
+            setTimeout(() => {
+                const loader = document.querySelector('.loader-container');
+                const content = document.querySelector('.content');
+                
+                loader.classList.add('fade-out');
+                content.classList.add('show');
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
